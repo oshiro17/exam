@@ -7,13 +7,24 @@ unsigned char reverse_bits(unsigned char octet)
     while (i > 0)
     {
         res = res * 2 +(octet % 2);
-        octet = octact / 2;
+        octet = octet / 2;
         i--;
     }
     return(res);
 }
-int main (void)
-{
-    printf("%d",reverse_bits(1));
-    return(0);
+unsigned char reverse_bits(unsigned char octet);
+
+int main(void) {
+    unsigned char octet = 97;  // 0b01100001
+    unsigned char reversed = reverse_bits(octet);
+    printf("Original: %d (0x%x) (0b", octet, octet);
+    for (int i = 7; i >= 0; i--) {
+        printf("%d", (octet >> i) & 1);
+    }
+    printf(")\nReversed: %d (0x%x) (0b", reversed, reversed);
+    for (int i = 7; i >= 0; i--) {
+        printf("%d", (reversed >> i) & 1);
+    }
+    printf(")\n");
+    return 0;
 }

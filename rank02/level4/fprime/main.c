@@ -2,40 +2,30 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-
-void put_f(int flag, int num)
-{
-    int i = 1;
-    char c;
-    int divi = 1;
-    while (i < num)
-    {
-        if ((num % i) == 0)
-            divi = i;
-        i++;
-    }
-    if (i != 1 )
-        put_f(0, num / divi);
-    if (flag == 0)
-        write(1, "*", 1);
-    c = divi + '0';
-    write(1, &c, 1);
-    return ;
-}
 int main(int argc , char **argv)
 {
-    int num = 0;
-    int flag = 1;
-    int j = 0;
-    int divisor;
+    int i = 2;
+    int num;
 
-    if (argc ==2)
+    if (argc == 2)
     {
         num = atoi(argv[1]);
-       if (num == 1)
-            write(1, "1\n",2);
-        put_f(flag, num);
+        if (num == 1)
+            printf("1");
+        while ( num >= i)
+        {
+            if (num % i == 0)
+            {
+                printf("%d", i);
+            if (num == i)
+                break;
+            printf("*");
+            num = num /i;
+            i = 2;
+            }
+            i++;
+        }
     }
-    write(1,"\n", 1);
-        
+    printf("\n");
+    return(0);
 }
